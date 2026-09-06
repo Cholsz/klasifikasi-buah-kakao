@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Tentang - Cacao Classifier{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="custom-card p-4 p-md-5 text-start">
+                <div class="text-center mb-5">
+                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 small fw-bold mb-2">TUGAS AKHIR / SKRIPSI</span>
+                    <h4 class="fw-bold text-dark mt-2">Tentang Penelitian Sistem</h4>
+                </div>
+                
+                <h6 class="fw-bold text-success mb-2">1. Latar Belakang Masalah</h6>
+                <p class="text-muted small" style="line-height:1.7;">Penyakit Busuk Buah Hitam dan Hama Penggerek Buah Kakao merupakan faktor krusial yang menurunkan kuantitas dan kualitas ekspor biji kakao nasional. Mengandalkan pengamatan mata petani konvensional memakan waktu yang lama. Oleh karena itu, riset ini mengimplementasikan pemrosesan citra berbasis kecerdasan buatan.</p>
+                
+                <h6 class="fw-bold text-success mb-2 mt-4">2. Cara Kerja Jaringan CNN (Convolutional Neural Network)</h6>
+                <p class="text-muted small" style="line-height:1.7;">Foto buah kakao berdimensi dinamis yang diunggah akan otomatis disesuaikan ukurannya menjadi 224x224 RGB. Lapisan konvolusi model kemudian mengekstraksi representasi fitur spasial gambar (bercak kulit, warna membusuk, guratan bintik hitam), lalu lapisan Fully Connected (Dense) menghitung nilai probabilitas akhir menggunakan fungsi aktivasi Softmax.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

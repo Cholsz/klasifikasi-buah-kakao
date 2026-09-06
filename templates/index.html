@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Beranda - Cacao Classifier{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="hero-section">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h1 class="hero-title">
+                    Sistem Klasifikasi<br>
+                    <span>Penyakit Buah Kakao</span><br>
+                    Menggunakan CNN
+                </h1>
+                <p class="hero-subtitle">
+                    Sistem cerdas berbasis web yang dirancang untuk mendeteksi dan mendiagnosis jenis penyakit komoditas buah kakao secara real-time. Didukung teknologi kecerdasan buatan berbasis citra digital.
+                </p>
+                <a href="{{ url_for('detect') }}" class="btn-custom-primary">
+                    Mulai Deteksi <i class="bi bi-arrow-right-short fs-5"></i>
+                </a>
+            </div>
+            <div class="col-lg-5 text-center">
+                <!-- Gambar ilustrasi buah kakao bebas royalti (Unsplash) -->
+                <!-- Jika gambar ditaruh langsung di dalam folder static -->
+                <img src="{{ url_for('static', filename='buah-kakao.png') }}" alt="Buah Kakao" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <!-- Bagian 3 Keunggulan Fitur -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-4 mb-4 mb-md-0">
+            <div class="custom-card">
+                <div class="d-flex justify-content-center"><div class="feature-icon-wrapper"><i class="bi bi-shield-check"></i></div></div>
+                <h5 class="fw-bold">Akurat</h5>
+                <p class="text-muted small">Model deep learning CNN telah dilatih secara matang guna menghasilkan presisi pengujian diagnosis maksimal.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+            <div class="custom-card">
+                <div class="d-flex justify-content-center"><div class="feature-icon-wrapper"><i class="bi bi-lightning-charge"></i></div></div>
+                <h5 class="fw-bold">Cepat</h5>
+                <p class="text-muted small">Algoritma inferensi backend mengeksekusi ekstraksi gambar hanya dalam hitungan milidetik.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="custom-card">
+                <div class="d-flex justify-content-center"><div class="feature-icon-wrapper"><i class="bi bi-phone-vibrate"></i></div></div>
+                <h5 class="fw-bold">Mudah Digunakan</h5>
+                <p class="text-muted small">Responsif dan ramah gawai, mempermudah akses langsung via smartphone di area perkebunan.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

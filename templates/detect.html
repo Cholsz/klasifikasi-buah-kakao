@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Klasifikasi - Cacao Classifier{% endblock %}
+{% block content %}
+<!-- Overlay Spinner saat Loading Prediksi -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner-border spinner-custom mb-3" role="status"></div>
+    <h5 class="fw-semibold text-dark">Sedang Memprediksi Penyakit...</h5>
+    <p class="text-muted small">Model sedang mengekstraksi matriks piksel dan menghitung probabilitas.</p>
+</div>
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h3 class="fw-bold text-dark">Klasifikasi Penyakit Buah Kakao</h3>
+        <p class="text-muted small">Unggah atau seret foto buah kakao untuk diidentifikasi kondisinya secara berkala.</p>
+    </div>
+
+    <!-- Menampilkan pesan error dari backend jika ada -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                {% for message in messages %}
+                <div class="alert alert-danger border-0 shadow-sm mb-4" style="border-radius:10px;">
+                    <i class="bi bi-exclamation-circle-fill me-2"></i> {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('detect') }}" method="POST" enctype="multipart/form-data" id="predictionForm">
+        <div class="row justify-content-center g-4">
+            <!-- Sisi Unggah / Upload Box -->
+            <div class="col-lg-6">
+                <div class="custom-card">
+                    <div class="upload-drag-area" id="dropArea">
+                        <i class="bi bi-cloud-arrow-up-fill upload-icon"></i>
+                        <h6 class="fw-bold mb-2">Drag & drop gambar di sini</h6>
+                        <p class="text-muted small mb-3">atau</p>
+                        <button type="button" class="btn-custom-secondary px-4 py-2" onclick="triggerFileInput()">
+                            <i class="bi bi-folder2-open"></i> Pilih Gambar
+                        </button>
+                        <input type="file" name="file" id="fileInput" accept=".jpg, .jpeg, .png" class="d-none">
+                        <p class="text-muted small mt-4 mb-0" style="font-size:0.78rem;">Ekstensi file valid: JPG, JPEG, PNG (Maks 5MB)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sisi Pratinjau / Preview (Muncul otomatis lewat JS) -->
+            <div class="col-lg-5" id="previewContainer" style="display: none;">
+                <div class="custom-card d-flex flex-column justify-content-between">
+                    <div>
+                        <h6 class="fw-bold mb-3"><i class="bi bi-image-fill text-success"></i> Preview Gambar</h6>
+                        <div class="preview-card">
+                            <img src="" id="imagePreview" class="preview-image" alt="Pratinjau Citra Kakao">
+                            <div class="p-3 d-flex justify-content-between align-items-center bg-light border-top">
+                                <span id="fileName" class="text-muted text-truncate text-start small fw-medium" style="max-width:180px;">file.png</span>
+                                <button type="button" class="btn btn-sm text-danger border-0 fw-semibold" onclick="resetFileSelection()">
+                                    <i class="bi bi-trash3"></i> Hapus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-custom-primary w-100 justify-content-center py-3 mt-4">
+                        <i class="bi bi-shield-shaded"></i> Prediksi Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-11">
+            <div class="alert border-0 shadow-sm p-3 text-start" style="border-radius: 12px; background-color: rgba(46,125,50,0.05); color: var(--primary-color);">
+                <span class="fw-bold text-success d-block mb-1"><i class="bi bi-lightbulb-fill"></i> Tips Pengambilan Gambar:</span>
+                <span class="small text-muted d-block">Posisikan buah kakao di tengah frame, pastikan pencahayaan cukup jelas, dan hindari objek latar belakang yang terlalu ramai.</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

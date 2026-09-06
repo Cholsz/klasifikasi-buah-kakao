@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+
+# Temporary marker files
+*.marker
+
+# Dataset
+cacao_photos/
+train/
+trains/
+val/
+test/
+testt/
+
+# Generated output
+output*.png
+
+# Model/cache
+*.h5
+*.keras
+*.pkl
+*.joblib
